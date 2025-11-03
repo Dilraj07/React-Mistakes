@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashwa Racing Recruitment 2025</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'ashwa-red': '#e53e3e', // Tailwind's red-600
+            'ashwa-dark': '#1a202c', // Tailwind's gray-900 equivalent for near black
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom CSS for the Pulsating Grid of Glowing Red Dots */
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      background-color: #000000;
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+      /* Allow scrolling for long content */
+    }
+
+    /* Animation Container for the Pulsating Grid */
+    .glowing-grid::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      opacity: 0.6;
+      /* Base visibility */
+      background-repeat: repeat;
+      background-size: 100px 100px;
+      /* Size of the grid cells */
+
+      /* Radial gradients to create soft, glowing red dots */
+      background-image:
+        radial-gradient(4px 4px at 50px 50px, rgba(229, 62, 62, 0.8), transparent, transparent),
+        radial-gradient(4px 4px at 10px 80px, rgba(229, 62, 62, 0.6), transparent),
+        radial-gradient(4px 4px at 90px 20px, rgba(229, 62, 62, 0.5), transparent),
+        radial-gradient(4px 4px at 30px 40px, rgba(229, 62, 62, 0.7), transparent);
+
+      animation: dot-shift 120s linear infinite, dot-glow 3s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    /* Slow, large drift for overall movement */
+    @keyframes dot-shift {
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: 1000px 1000px;
+      }
+    }
+
+    /* Pulsating glow effect */
+    @keyframes dot-glow {
+      0% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: scale(1.05);
+        opacity: 0.8;
+      }
+    }
+
+    /* Styling for the form inputs */
+    .form-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #4a5568;
+      /* Dark border */
+      border-radius: 0.5rem;
+      background-color: #2d3748;
+      /* Dark input background */
+      color: #f7fafc;
+      /* Light text */
+      transition: all 0.2s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #e53e3e;
+      /* Ashwa Red border on focus */
+      box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.5);
+    }
+  </style>
+</head>
+
+<body class="glowing-grid">
+
+  <!-- Loading Indicator -->
+  <div id="loading-indicator" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50">
+    <div class="flex flex-col items-center">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-ashwa-red mb-4"></div>
+      <p class="text-white text-lg">Submitting Application...</p>
+    </div>
+  </div>
+
+  <div id="form-container"
+    class="w-full max-w-2xl bg-ashwa-dark bg-opacity-70 p-6 md:p-10 rounded-xl shadow-2xl border-t-8 border-ashwa-red transform transition-all duration-300 relative z-0 mt-8 mb-8">
+    <header class="text-center mb-8">
+      <h1 class="text-4xl font-extrabold text-ashwa-red tracking-tight mb-2">
+        ASHWA RACING
+      </h1>
+      <p class="text-xl font-light text-gray-100">
+        First & Second Year Recruitment Form
+      </p>
+      <p class="text-gray-400 text-sm mt-2">
+        Join the legacy. Drive innovation.
+      </p>
+    </header>
+
+    <!-- The form now uses the 'name' attributes for submission -->
+    <form id="recruitment-form" onsubmit="handleFormSubmission(event)">
+
+      <div class="space-y-6 mb-8 border-b border-gray-700 pb-6">
+        <h2 class="text-2xl font-semibold text-gray-100 mb-4 border-l-4 border-ashwa-red pl-3">Your Details</h2>
+
+        <div>
+          <label for="full-name" class="block text-sm font-medium text-gray-300 mb-1">Full Name</label>
+          <input type="text" id="full-name" name="fullName" required class="form-input">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="student-id" class="block text-sm font-medium text-gray-300 mb-1">Student ID / Roll
+              Number</label>
+            <input type="text" id="student-id" name="studentId" required class="form-input">
+          </div>
+
+          <div>
+            <label for="year-of-study" class="block text-sm font-medium text-gray-300 mb-1">Year of Study</label>
+            <select id="year-of-study" name="yearOfStudy" required class="form-input appearance-none cursor-pointer">
+              <option value="" disabled selected>Select Year</option>
+              <option value="1st Year" class="bg-gray-800 text-white">1st Year</option>
+              <option value="2nd Year" class="bg-gray-800 text-white">2d Year</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="branch" class="block text-sm font-medium text-gray-300 mb-1">Branch / Department</label>
+          <input type="text" id="branch" name="branch" required class="form-input">
+        </div>
+      </div>
+
+      <div class="space-y-6 mb-8 border-b border-gray-700 pb-6">
+        <h2 class="text-2xl font-semibold text-gray-100 mb-4 border-l-4 border-ashwa-red pl-3">Contact & Confirmation
+        </h2>
+
+        <div>
+          <label for="personal-email" class="block text-sm font-medium text-gray-300 mb-1">Personal Email
+            Address</label>
+          <input type="email" id="personal-email" name="personalEmail" required class="form-input"
+            placeholder="e.g., you@example.com">
+          <p class="text-xs text-gray-500 mt-1">
+            <span class="font-bold text-ashwa-red">*Note:</span> A confirmation email would be sent to this address by
+            the backend.
+          </p>
+        </div>
+
+        <div>
+          <label for="phone-number" class="block text-sm font-medium text-gray-300 mb-1">Phone Number (10
+            digits)</label>
+          <input type="tel" id="phone-number" name="phoneNumber" pattern="[0-9]{10}" required class="form-input"
+            placeholder="e.g., 9876543210">
+        </div>
+      </div>
+
+      <div class="space-y-6 mb-8">
+        <h2 class="text-2xl font-semibold text-gray-100 mb-4 border-l-4 border-ashwa-red pl-3">Why Ashwa Racing?</h2>
+
+        <div>
+          <label for="motivation" class="block text-sm font-medium text-gray-300 mb-1">Tell us why you want to join
+            Ashwa Racing (Min 50 words)</label>
+          <textarea id="motivation" name="motivation" rows="4" required class="form-input"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-300 mb-2">Relevant Skills / Experience (Select all that
+            apply)</label>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <label class="flex items-center text-gray-200">
+              <input type="checkbox" name="skills" value="CAD/Design"
+                class="h-4 w-4 text-ashwa-red rounded focus:ring-ashwa-red bg-gray-700 border-gray-600">
+              <span class="ml-2 text-sm">CAD/Design (SolidWorks/Fusion)</span>
+            </label>
+            <label class="flex items-center text-gray-200">
+              <input type="checkbox" name="skills" value="FEA/Simulation"
+                class="h-4 w-4 text-ashwa-red rounded focus:ring-ashwa-red bg-gray-700 border-gray-600">
+              <span class="ml-2 text-sm">FEA/Simulation</span>
+            </label>
+            <label class="flex items-center text-gray-200">
+              <input type="checkbox" name="skills" value="Machining/Fabrication"
+                class="h-4 w-4 text-ashwa-red rounded focus:ring-ashwa-red bg-gray-700 border-gray-600">
+              <span class="ml-2 text-sm">Machining/Fabrication</span>
+            </label>
+            <label class="flex items-center text-gray-200">
+              <input type="checkbox" name="skills" value="Coding/Electronics"
+                class="h-4 w-4 text-ashwa-red rounded focus:ring-ashwa-red bg-gray-700 border-gray-600">
+              <span class="ml-2 text-sm">Coding/Electronics (Arduino/Pi)</span>
+            </label>
+            <label class="flex items-center text-gray-200">
+              <input type="checkbox" name="skills" value="Marketing/PR"
+                class="h-4 w-4 text-ashwa-red rounded focus:ring-ashwa-red bg-gray-700 border-gray-600">
+              <span class="ml-2 text-sm">Marketing/PR/Sponsorship</span>
+            </label>
+            <label class="flex items-center text-gray-200">
+              <input type="checkbox" name="skills" value="Documentation"
+                class="h-4 w-4 text-ashwa-red rounded focus:ring-ashwa-red bg-gray-700 border-gray-600">
+              <span class="ml-2 text-sm">Documentation/Report Writing</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" id="submit-button"
+        class="w-full bg-ashwa-red hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200 shadow-md hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-red-500 focus:ring-opacity-50">
+        Submit Application
+      </button>
+    </form>
+
+    <div id="success-message" class="hidden mt-8 p-6 bg-green-900 border-l-4 border-green-400 text-white rounded-lg"
+      role="alert">
+      <p class="font-bold text-xl mb-2">Application Submitted!</p>
+      <p>Your application has been successfully recorded in the Ashwa Racing database.</p>
+      <p class="text-sm mt-2 text-green-300">We will review your details and be in touch soon regarding the next steps.
+      </p>
+    </div>
+
+    <div id="error-message" class="hidden mt-8 p-6 bg-red-900 border-l-4 border-red-400 text-white rounded-lg"
+      role="alert">
+      <p class="font-bold text-xl mb-2">Submission Error</p>
+      <p>There was a problem submitting your application. Please check your connection and try again.</p>
+      <p class="text-sm mt-2 text-red-300">If the problem persists, contact the Ashwa Racing recruitment team directly.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // *** IMPORTANT: REPLACE THIS URL with your actual deployed Apps Script URL ***
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx4juNz_PhvVxgd_OrE6mpNTKr7YV9Zt7atUEro_S6CYflohuv5oSJKml7iqlBuVj0a_g/exec';
+
+    const form = document.getElementById('recruitment-form');
+    const successBox = document.getElementById('success-message');
+    const errorBox = document.getElementById('error-message');
+    const loadingIndicator = document.getElementById('loading-indicator');
+
+    async function handleFormSubmission(event) {
+      event.preventDefault();
+
+      // Clear previous messages
+      successBox.classList.add('hidden');
+      errorBox.classList.add('hidden');
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      // Show loading
+      loadingIndicator.classList.remove('hidden');
+
+      // Collect form data
+      const formData = new FormData(form);
+
+      // Format checkbox data into a comma-separated string for Google Sheets
+      const skillsArray = formData.getAll('skills');
+      formData.set('skills', skillsArray.join(', '));
+
+      try {
+        const response = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          body: formData, // FormData object is used directly
+          mode: 'no-cors' // Required for Google Apps Script submission
+        });
+
+        // Since Google Apps Script deployment often returns an opaque 'no-cors' response,
+        // we treat a successful fetch without immediate error as a success.
+        if (response) {
+          // Success!
+          form.classList.add('hidden');
+          successBox.classList.remove('hidden');
+          console.log("Form successfully submitted via Apps Script.");
+        } else {
+          // Even though we use no-cors, this is a fallback for logic error
+          errorBox.classList.remove('hidden');
+          console.error("Submission failed, received non-success status.");
+        }
+
+      } catch (error) {
+        // Handle network errors
+        errorBox.classList.remove('hidden');
+        console.error("Network or fetch error:", error);
+      } finally {
+        // Hide loading regardless of result
+        loadingIndicator.classList.add('hidden');
+      }
+    }
+  </script>
+
+</body>
+
+</html>
