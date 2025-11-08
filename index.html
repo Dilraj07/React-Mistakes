@@ -32,7 +32,6 @@
       padding: 2rem 1rem;
       display: flex;
       justify-content: center;
-      /* Allow scrolling for long content */
     }
 
     /* Animation Container for the Pulsating Grid */
@@ -102,12 +101,17 @@
       /* Ashwa Red border on focus */
       box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.5);
     }
+
+    .required-star:after {
+      content: ' *';
+      color: #e53e3e;
+      font-weight: bold;
+    }
   </style>
 </head>
 
 <body class="glowing-grid">
 
-  <!-- Loading Indicator -->
   <div id="loading-indicator" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center hidden z-50">
     <div class="flex flex-col items-center">
       <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-ashwa-red mb-4"></div>
@@ -119,115 +123,144 @@
     class="w-full max-w-2xl bg-ashwa-dark bg-opacity-70 p-6 md:p-10 rounded-xl shadow-2xl border-t-8 border-ashwa-red transform transition-all duration-300 relative z-0 mt-8 mb-8">
     <header class="text-center mb-8">
       <h1 class="text-4xl font-extrabold text-ashwa-red tracking-tight mb-2">
-        ASHWA RACING
+        ASHWA RACING RECRUITMENT 2025
       </h1>
-      <p class="text-xl font-light text-gray-100">
-        First & Second Year Recruitment Form
+      <p class="text-lg font-light text-gray-100 mt-4 mb-4">
+        We’re on the lookout for <b>passionate, driven minds</b> ready to learn, build, and race beyond limits. <br>
+        Fill this form carefully, your journey starts here. 🏎️
       </p>
-      <p class="text-gray-400 text-sm mt-2">
-        Join the legacy. Drive innovation.
-      </p>
+      <div class="text-sm text-gray-300 bg-gray-800 p-4 rounded-lg">
+        <p class="font-bold text-ashwa-red mb-1">📝 Test Details</p>
+        <div class="grid grid-cols-3 gap-2 text-xs">
+          <p><strong>Date:</strong> 11/11/2025 & 18/11/2025</p>
+          <p><strong>Venue:</strong> IEM Auditorium</p>
+          <p><strong>Time:</strong> 4:30pm - 6:30pm</p>
+        </div>
+        <p class="mt-3 text-sm">For further details/inquiries contact:</p>
+        <p class="text-xs">
+          Damian C Dani: <strong class="text-ashwa-red">9380453928</strong> |
+          Abhishek Srinivasan: <strong class="text-ashwa-red">9513432752</strong>
+        </p>
+      </div>
     </header>
 
-    <!-- The form now uses the 'name' attributes for submission -->
     <form id="recruitment-form" onsubmit="handleFormSubmission(event)">
 
       <div class="space-y-6 mb-8 border-b border-gray-700 pb-6">
-        <h2 class="text-2xl font-semibold text-gray-100 mb-4 border-l-4 border-ashwa-red pl-3">Your Details</h2>
+        <h2 class="text-2xl font-semibold text-gray-100 mb-4 border-l-4 border-ashwa-red pl-3">Personal & Academic
+          Details</h2>
 
         <div>
-          <label for="full-name" class="block text-sm font-medium text-gray-300 mb-1">Full Name</label>
+          <label for="full-name" class="block text-sm font-medium text-gray-300 mb-1 required-star">Full Name</label>
           <input type="text" id="full-name" name="fullName" required class="form-input">
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label for="student-id" class="block text-sm font-medium text-gray-300 mb-1">Student ID / Roll
-              Number</label>
+            <label for="student-id" class="block text-sm font-medium text-gray-300 mb-1 required-star">Student
+              ID/USN</label>
             <input type="text" id="student-id" name="studentId" required class="form-input">
           </div>
 
           <div>
-            <label for="year-of-study" class="block text-sm font-medium text-gray-300 mb-1">Year of Study</label>
-            <select id="year-of-study" name="yearOfStudy" required class="form-input appearance-none cursor-pointer">
-              <option value="" disabled selected>Select Year</option>
-              <option value="1st Year" class="bg-gray-800 text-white">1st Year</option>
-              <option value="2nd Year" class="bg-gray-800 text-white">2d Year</option>
-            </select>
+            <label for="rvce-email" class="block text-sm font-medium text-gray-300 mb-1 required-star">RVCE mail
+              ID</label>
+            <input type="email" id="rvce-email" name="rvceEmail" required class="form-input"
+              placeholder="e.g., name.is@rvce.edu.in">
           </div>
         </div>
 
-        <div>
-          <label for="branch" class="block text-sm font-medium text-gray-300 mb-1">Branch / Department</label>
-          <input type="text" id="branch" name="branch" required class="form-input">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="year-of-study" class="block text-sm font-medium text-gray-300 mb-1 required-star">Year of
+              Study</label>
+            <select id="year-of-study" name="yearOfStudy" required class="form-input appearance-none cursor-pointer">
+              <option value="" disabled selected>Select Year</option>
+              <option value="1st Year" class="bg-gray-800 text-white">1st year</option>
+              <option value="2nd Year" class="bg-gray-800 text-white">2nd year</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="branch" class="block text-sm font-medium text-gray-300 mb-1 required-star">Branch</label>
+            <select id="branch" name="branch" required class="form-input appearance-none cursor-pointer">
+              <option value="" disabled selected>Select Branch</option>
+              <option value="Aerospace" class="bg-gray-800 text-white">Aerospace</option>
+              <option value="AI & ML" class="bg-gray-800 text-white">AI & ML</option>
+              <option value="Biotech" class="bg-gray-800 text-white">Biotech</option>
+              <option value="Chemical" class="bg-gray-800 text-white">Chemical</option>
+              <option value="Civil" class="bg-gray-800 text-white">Civil</option>
+              <option value="Computer Science" class="bg-gray-800 text-white">Computer Science</option>
+              <option value="Cyber security" class="bg-gray-800 text-white">Cyber security</option>
+              <option value="Data Science" class="bg-gray-800 text-white">Data Science</option>
+              <option value="Electrical & Electronics" class="bg-gray-800 text-white">Electrical & Electronics</option>
+              <option value="Electronics & Communication" class="bg-gray-800 text-white">Electronics & Communication
+              </option>
+              <option value="Electronics and Telecommunication" class="bg-gray-800 text-white">Electronics and
+                Telecommunication</option>
+              <option value="Industrial Engineering & Management" class="bg-gray-800 text-white">Industrial Engineering
+                & Management</option>
+              <option value="Information Science" class="bg-gray-800 text-white">Information Science</option>
+              <option value="Mechanical" class="bg-gray-800 text-white">Mechanical</option>
+            </select>
+          </div>
         </div>
       </div>
 
       <div class="space-y-6 mb-8 border-b border-gray-700 pb-6">
-        <h2 class="text-2xl font-semibold text-gray-100 mb-4 border-l-4 border-ashwa-red pl-3">Contact & Confirmation
-        </h2>
+        <h2 class="text-2xl font-semibold text-gray-100 mb-4 border-l-4 border-ashwa-red pl-3">Contact & Logistics</h2>
 
         <div>
-          <label for="personal-email" class="block text-sm font-medium text-gray-300 mb-1">Personal Email
-            Address</label>
-          <input type="email" id="personal-email" name="personalEmail" required class="form-input"
-            placeholder="e.g., you@example.com">
-          <p class="text-xs text-gray-500 mt-1">
-            <span class="font-bold text-ashwa-red">*Note:</span> A confirmation email would be sent to this address by
-            the backend.
-          </p>
+          <label for="phone-number" class="block text-sm font-medium text-gray-300 mb-1 required-star">Contact
+            number</label>
+          <input type="tel" id="phone-number" name="contactNumber" pattern="[0-9]{10}" required class="form-input"
+            placeholder="10 digits e.g., 9876543210">
         </div>
 
         <div>
-          <label for="phone-number" class="block text-sm font-medium text-gray-300 mb-1">Phone Number (10
-            digits)</label>
-          <input type="tel" id="phone-number" name="phoneNumber" pattern="[0-9]{10}" required class="form-input"
-            placeholder="e.g., 9876543210">
+          <label class="block text-sm font-medium text-gray-300 mb-2 required-star">Current place of residence</label>
+          <div class="flex flex-wrap gap-4">
+            <label class="flex items-center text-gray-200">
+              <input type="radio" name="residence" value="Hostel" required
+                class="h-4 w-4 text-ashwa-red focus:ring-ashwa-red bg-gray-700 border-gray-600">
+              <span class="ml-2 text-sm">Hostel</span>
+            </label>
+            <label class="flex items-center text-gray-200">
+              <input type="radio" name="residence" value="PG" required
+                class="h-4 w-4 text-ashwa-red focus:ring-ashwa-red bg-gray-700 border-gray-600">
+              <span class="ml-2 text-sm">PG</span>
+            </label>
+            <label class="flex items-center text-gray-200">
+              <input type="radio" name="residence" value="Day scholar" required
+                class="h-4 w-4 text-ashwa-red focus:ring-ashwa-red bg-gray-700 border-gray-600">
+              <span class="ml-2 text-sm">Day scholar</span>
+            </label>
+          </div>
         </div>
       </div>
 
       <div class="space-y-6 mb-8">
-        <h2 class="text-2xl font-semibold text-gray-100 mb-4 border-l-4 border-ashwa-red pl-3">Why Ashwa Racing?</h2>
+        <h2 class="text-2xl font-semibold text-gray-100 mb-4 border-l-4 border-ashwa-red pl-3">Motivation & Test Slot
+        </h2>
 
         <div>
-          <label for="motivation" class="block text-sm font-medium text-gray-300 mb-1">Tell us why you want to join
-            Ashwa Racing (Min 50 words)</label>
+          <label for="motivation" class="block text-sm font-medium text-gray-300 mb-1 required-star">Why do you want to
+            join Ashwa?</label>
           <textarea id="motivation" name="motivation" rows="4" required class="form-input"></textarea>
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-300 mb-2">Relevant Skills / Experience (Select all that
-            apply)</label>
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <label class="block text-sm font-medium text-gray-300 mb-2 required-star">Preferred Date (Test Slot)</label>
+          <div class="flex flex-wrap gap-4">
             <label class="flex items-center text-gray-200">
-              <input type="checkbox" name="skills" value="CAD/Design"
-                class="h-4 w-4 text-ashwa-red rounded focus:ring-ashwa-red bg-gray-700 border-gray-600">
-              <span class="ml-2 text-sm">CAD/Design (SolidWorks/Fusion)</span>
+              <input type="radio" name="preferredDate" value="11th Nov" required
+                class="h-4 w-4 text-ashwa-red focus:ring-ashwa-red bg-gray-700 border-gray-600">
+              <span class="ml-2 text-sm">11th Nov</span>
             </label>
             <label class="flex items-center text-gray-200">
-              <input type="checkbox" name="skills" value="FEA/Simulation"
-                class="h-4 w-4 text-ashwa-red rounded focus:ring-ashwa-red bg-gray-700 border-gray-600">
-              <span class="ml-2 text-sm">FEA/Simulation</span>
-            </label>
-            <label class="flex items-center text-gray-200">
-              <input type="checkbox" name="skills" value="Machining/Fabrication"
-                class="h-4 w-4 text-ashwa-red rounded focus:ring-ashwa-red bg-gray-700 border-gray-600">
-              <span class="ml-2 text-sm">Machining/Fabrication</span>
-            </label>
-            <label class="flex items-center text-gray-200">
-              <input type="checkbox" name="skills" value="Coding/Electronics"
-                class="h-4 w-4 text-ashwa-red rounded focus:ring-ashwa-red bg-gray-700 border-gray-600">
-              <span class="ml-2 text-sm">Coding/Electronics (Arduino/Pi)</span>
-            </label>
-            <label class="flex items-center text-gray-200">
-              <input type="checkbox" name="skills" value="Marketing/PR"
-                class="h-4 w-4 text-ashwa-red rounded focus:ring-ashwa-red bg-gray-700 border-gray-600">
-              <span class="ml-2 text-sm">Marketing/PR/Sponsorship</span>
-            </label>
-            <label class="flex items-center text-gray-200">
-              <input type="checkbox" name="skills" value="Documentation"
-                class="h-4 w-4 text-ashwa-red rounded focus:ring-ashwa-red bg-gray-700 border-gray-600">
-              <span class="ml-2 text-sm">Documentation/Report Writing</span>
+              <input type="radio" name="preferredDate" value="18th Nov" required
+                class="h-4 w-4 text-ashwa-red focus:ring-ashwa-red bg-gray-700 border-gray-600">
+              <span class="ml-2 text-sm">18th Nov</span>
             </label>
           </div>
         </div>
@@ -242,9 +275,7 @@
     <div id="success-message" class="hidden mt-8 p-6 bg-green-900 border-l-4 border-green-400 text-white rounded-lg"
       role="alert">
       <p class="font-bold text-xl mb-2">Application Submitted!</p>
-      <p>Your application has been successfully recorded in the Ashwa Racing database.</p>
-      <p class="text-sm mt-2 text-green-300">We will review your details and be in touch soon regarding the next steps.
-      </p>
+      <p>Your application has been successfully recorded </p>
     </div>
 
     <div id="error-message" class="hidden mt-8 p-6 bg-red-900 border-l-4 border-red-400 text-white rounded-lg"
@@ -258,7 +289,8 @@
 
   <script>
     // *** IMPORTANT: REPLACE THIS URL with your actual deployed Apps Script URL ***
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx4juNz_PhvVxgd_OrE6mpNTKr7YV9Zt7atUEro_S6CYflohuv5oSJKml7iqlBuVj0a_g/exec';
+
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwJ1nq_fzamB9x9baboW2nHnlozaOqCKTvyem7nJzUaam8igQGIBGyLLBIxY4DkTlSvVg/exec';
 
     const form = document.getElementById('recruitment-form');
     const successBox = document.getElementById('success-message');
@@ -283,9 +315,8 @@
       // Collect form data
       const formData = new FormData(form);
 
-      // Format checkbox data into a comma-separated string for Google Sheets
-      const skillsArray = formData.getAll('skills');
-      formData.set('skills', skillsArray.join(', '));
+      // Note: Since all fields are now single-value (text, select, radio), 
+      // no special formatting is needed for checkboxes anymore.
 
       try {
         const response = await fetch(SCRIPT_URL, {
@@ -294,15 +325,12 @@
           mode: 'no-cors' // Required for Google Apps Script submission
         });
 
-        // Since Google Apps Script deployment often returns an opaque 'no-cors' response,
-        // we treat a successful fetch without immediate error as a success.
+        // Assuming successful fetch equals successful submission for no-cors mode
         if (response) {
-          // Success!
           form.classList.add('hidden');
           successBox.classList.remove('hidden');
           console.log("Form successfully submitted via Apps Script.");
         } else {
-          // Even though we use no-cors, this is a fallback for logic error
           errorBox.classList.remove('hidden');
           console.error("Submission failed, received non-success status.");
         }
